@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de tareas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <header>
+        <h1>Gestor de tareas</h1>
+    </header>
+
+
+
+    <!-- seccion formulario  y tareas-->
+    <section class="container-fluid ">
+        <section class="row">
+            <!-- seccion formulario-->
+            <section class="col-3 order-1">
+
+                <h4 class="text-center mb-4">NUEVA TAREA</h4>
+
+                <form>
+                    <div class="mb-3">
+                        <label for="inputTitulo" class="form-label">Título</label>
+                        <input type="text" class="form-control" id="inputTitulo">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="inputDescripcion" class="form-label">Descripción</label>
+                        <textarea class="form-control" id="inputDescripcion" rows="3"></textarea>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label d-block">Prioridad:</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="prioridadRadios" id="radioBaja"
+                                value="baja" checked>
+                            <label class="form-check-label" for="radioBaja">Baja</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="prioridadRadios" id="radioMedia"
+                                value="media">
+                            <label class="form-check-label" for="radioMedia">Media</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="prioridadRadios" id="radioAlta"
+                                value="alta">
+                            <label class="form-check-label" for="radioAlta">Alta</label>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">CREAR TAREA</button>
+                    </div>
+                </form>
+
+            </section>
+            <!-- seccion tareas-->
+            <!-- seccion tareas 1-->
+
+            <section class="col-3 order-2">
+                <h2>Por hacer</h2>
+            </section>
+            <!-- seccion tareas 2-->
+            <section class="col-3 order-3">
+                <h3>Haciendo</h3>
+            </section>
+            <!-- seccion tareas 3-->
+            <section class="col-3 order-4">
+                <h4>Hecho</h4>
+            </section>
+
+
+        </section>
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+    <footer id="footer" class="mt-auto bg-light text-center py-3">creador: Bryan Camilo Diaz Sanchez</footer>
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

@@ -2,6 +2,39 @@ let inputTitulojs = document.querySelector('#inputTitulo');
 let inputDescripcionjs = document.querySelector('#inputDescripcion');
 let inputfechajs = document.querySelector('#inputfecha')
 let botonCrear = document.querySelector('.btn-primary');
+const botonesCompletar = document.querySelectorAll('.btn-completar');
+
+
+botonesCompletar.forEach(function(boton) {
+    
+    boton.addEventListener('click', function(evento) {
+        
+        evento.preventDefault(); 
+
+        
+        const tarjeta = boton.closest('.card');
+
+        
+        tarjeta.classList.toggle('bg-success-subtle'); // Le pone fondo verde a la tarjeta
+        
+
+        
+        if (tarjeta.classList.contains('bg-success-subtle')) {
+            boton.textContent = 'Pendiente';
+            boton.classList.replace('btn-success', 'btn-warning'); // Botón amarillo
+        } else {
+            boton.textContent = 'Completada';
+            boton.classList.replace('btn-warning', 'btn-success'); // Botón verde
+        }
+    });
+    
+});
+
+
+
+
+
+
 
 botonCrear.addEventListener('click', function (evento) {
     evento.preventDefault();
@@ -47,3 +80,7 @@ botonCrear.addEventListener('click', function (evento) {
     console.log("la fecha es: " + inputfechaV);
     console.log("La prioridad es: " + prioridadV);
 });
+
+const taskManager = new TaskManager(); 
+ 
+console.log(taskManager.tasks); 

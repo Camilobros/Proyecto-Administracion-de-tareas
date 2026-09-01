@@ -47,7 +47,8 @@ newTaskForm.addEventListener('submit', function (event) {
     taskManager.addTask(
     inputTituloV,
     inputDescripcionV,
-    inputfechaV
+    inputfechaV,
+    prioridadV
     );
 
     newTaskForm.reset();
@@ -65,8 +66,6 @@ botonesCompletar.forEach(function (boton) {
 
 
         const tarjeta = boton.closest('.card');
-
-
         tarjeta.classList.toggle('bg-success-subtle'); // Le pone fondo verde a la tarjeta
 
 
@@ -83,5 +82,34 @@ botonesCompletar.forEach(function (boton) {
 });
 
 
-console.log(taskManager.tasks); 
+console.log(taskManager.tasks);
+
+
+
+
+const contenedorPrincipal = document.querySelector('.conte-principal');
+
+contenedorPrincipal.addEventListener('click', function(evento) {
+    
+    if (evento.target.classList.contains('delete-button')) {
+        
+        evento.preventDefault(); 
+        
+        
+        const parentTask = evento.target.closest('.card');
+        
+        
+        const taskId = Number(parentTask.dataset.taskId);
+        
+        
+        taskManager.deleteTask(taskId);
+        
+        
+        console.log("Se eliminó la tarea", taskId);
+        console.log("Tareas restantes:", taskManager.tasks);
+
+        // taskManager.save();
+        // taskManager.render();
+    }
+});
 

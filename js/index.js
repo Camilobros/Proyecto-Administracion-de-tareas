@@ -47,8 +47,7 @@ newTaskForm.addEventListener('submit', function (event) {
     taskManager.addTask(
     inputTituloV,
     inputDescripcionV,
-    inputfechaV,
-    'PORHACER'
+    inputfechaV
     );
 
     newTaskForm.reset();

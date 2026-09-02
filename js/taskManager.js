@@ -72,6 +72,68 @@ class TaskManager {
 
 
 
+    render() {
+        
+        const tasksHtmlList = [];
+
+        
+        for (let task of this.tasks) {
+            
+            
+            const taskHtml = createTaskHtml(task.id, task.name, task.description, task.prioridad);
+            
+            
+            tasksHtmlList.push(taskHtml);
+        }
+
+        
+        const tasksHtml = tasksHtmlList.join('\n');
+
+        
+        const listaPorHacer = document.querySelector('#lista-por-hacer');
+        listaPorHacer.innerHTML = tasksHtml;
+    }
+
+
+    
+    save() {
+        
+        const tasksJson = JSON.stringify(this.tasks);
+        
+        
+        localStorage.setItem('tareasGuardadas', tasksJson);
+
+        
+        const currentIdTexto = String(this.currentId);
+        
+        
+        localStorage.setItem('idGuardado', currentIdTexto);
+    }
+    
+
+    load() {
+        
+        if (localStorage.getItem('tareasGuardadas')) {
+            
+            
+            const tasksJson = localStorage.getItem('tareasGuardadas');
+            
+            
+            this.tasks = JSON.parse(tasksJson);
+        }
+
+        
+        if (localStorage.getItem('idGuardado')) {
+            
+            
+            const currentIdTexto = localStorage.getItem('idGuardado');
+            
+            
+            this.currentId = Number(currentIdTexto);
+        }
+    }
+
+
 
 
 

@@ -5,6 +5,9 @@ let botonCrear = document.querySelector('.btn-primary');
 const botonesCompletar = document.querySelectorAll('.btn-completar');
 const taskManager = new TaskManager();
 
+taskManager.load();   
+taskManager.render();
+
 const newTaskForm = document.querySelector('#newTaskForm');
 newTaskForm.addEventListener('submit', function (event) {
     event.preventDefault();
@@ -51,35 +54,18 @@ newTaskForm.addEventListener('submit', function (event) {
     prioridadV
     );
 
+    taskManager.save();
+
+    taskManager.render();
+
     newTaskForm.reset();
+
+
 
     console.log(taskManager.tasks); 
 
 });
 
-
-botonesCompletar.forEach(function (boton) {
-
-    boton.addEventListener('click', function (evento) {
-
-        evento.preventDefault();
-
-
-        const tarjeta = boton.closest('.card');
-        tarjeta.classList.toggle('bg-success-subtle'); // Le pone fondo verde a la tarjeta
-
-
-
-        if (tarjeta.classList.contains('bg-success-subtle')) {
-            boton.textContent = 'Pendiente';
-            boton.classList.replace('btn-success', 'btn-warning'); // Botón amarillo
-        } else {
-            boton.textContent = 'Completada';
-            boton.classList.replace('btn-warning', 'btn-success'); // Botón verde
-        }
-    });
-
-});
 
 
 console.log(taskManager.tasks);
@@ -91,25 +77,43 @@ const contenedorPrincipal = document.querySelector('.conte-principal');
 
 contenedorPrincipal.addEventListener('click', function(evento) {
     
+    
     if (evento.target.classList.contains('delete-button')) {
-        
         evento.preventDefault(); 
         
-        
         const parentTask = evento.target.closest('.card');
-        
-        
         const taskId = Number(parentTask.dataset.taskId);
-        
-        
         taskManager.deleteTask(taskId);
         
-        
         console.log("Se eliminó la tarea", taskId);
-        console.log("Tareas restantes:", taskManager.tasks);
+        
+        
+        taskManager.save();
+        
+        taskManager.render();
+    }
 
-        // taskManager.save();
-        // taskManager.render();
+    
+    if (evento.target.classList.contains('btn-completar')) {
+        evento.preventDefault();
+        
+        
+        const boton = evento.target; 
+        const tarjeta = boton.closest('.card');
+        
+        tarjeta.classList.toggle('bg-success-subtle'); 
+
+        if (tarjeta.classList.contains('bg-success-subtle')) {
+            boton.textContent = 'Pendiente';
+            boton.classList.replace('btn-success', 'btn-warning'); 
+        } else {
+            boton.textContent = 'Completada';
+            boton.classList.replace('btn-warning', 'btn-success'); 
+        }
     }
 });
+
+
+
+
 

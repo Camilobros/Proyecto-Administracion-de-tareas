@@ -96,20 +96,19 @@ contenedorPrincipal.addEventListener('click', function(evento) {
     
     if (evento.target.classList.contains('btn-completar')) {
         evento.preventDefault();
-        
-        
-        const boton = evento.target; 
-        const tarjeta = boton.closest('.card');
-        
-        tarjeta.classList.toggle('bg-success-subtle'); 
 
-        if (tarjeta.classList.contains('bg-success-subtle')) {
-            boton.textContent = 'Pendiente';
-            boton.classList.replace('btn-success', 'btn-warning'); 
-        } else {
-            boton.textContent = 'Completada';
-            boton.classList.replace('btn-warning', 'btn-success'); 
-        }
+
+        const parentTask = evento.target.closest('.card');
+        const taskId = Number(parentTask.dataset.taskId);
+
+        
+        taskManager.toggleTaskStatus(taskId);
+        
+        
+        taskManager.save();
+        
+        
+        taskManager.render(); 
     }
 });
 
